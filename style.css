@@ -1,4 +1,4 @@
-/* Basic Reset and Layout */
+/* GLOBAL RESETS AND MOBILE VIEWPORT SETUP */
 body {
     display: flex;
     flex-direction: column;
@@ -7,30 +7,75 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #e0f7fa; 
+    background-color: #333; /* Dark background to mimic device casing */
     user-select: none; 
 }
 
-/* Header Styling */
-header h1 {
-    color: #00796b; 
-    margin-bottom: 20px;
+/* 📞 PHONE SCREEN SIMULATION */
+#phone-frame {
+    /* Fixed mobile size */
+    width: 380px; 
+    height: 700px;
+    background-color: #fff; /* White screen background */
+    border: 10px solid #111; /* Bezel */
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    
+    /* Layout inside the screen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    overflow: hidden; /* Important for clean edges */
 }
 
-/* Character Container */
+/* HEADER AND CHARACTER STYLING (Inside the frame) */
+header h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
 #character-container {
     cursor: pointer; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
-    background-color: white; 
-    padding: 10px; 
+    margin-top: 10px;
 }
 
-/* Character Image Styling */
 #abdu-character {
     display: block;
-    width: 300px; 
+    width: 250px; /* Reduced size to fit the mobile frame */
     height: auto; 
     transition: transform 0.1s ease; 
     border-radius: 5px;
+}
+
+/* ACTION CONTROLS (Moved to the bottom for easier mobile tapping) */
+#action-controls {
+    margin-top: auto; /* Pushes controls to the bottom */
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px; /* Slightly smaller gap for compact layout */
+    width: 90%;
+}
+
+#action-controls button {
+    flex-grow: 1;
+    min-width: 45%; /* Ensures two buttons per row */
+    padding: 12px 10px;
+    font-size: 1em;
+    background-color: #64b5f6; /* A friendly blue for buttons */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+#action-controls button:hover {
+    background-color: #42a5f5;
 }
