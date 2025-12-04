@@ -1,0 +1,36 @@
+/* Basic Reset and Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; 
+    user-select: none; 
+}
+
+/* Header Styling */
+header h1 {
+    color: #00796b; 
+    margin-bottom: 20px;
+}
+
+/* Character Container */
+#character-container {
+    cursor: pointer; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
+    background-color: white; 
+    padding: 10px; 
+}
+
+/* Character Image Styling */
+#abdu-character {
+    display: block;
+    width: 300px; 
+    height: auto; 
+    transition: transform 0.1s ease; 
+    border-radius: 5px;
+}
