@@ -7,15 +7,22 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #333; /* Device casing */
+    background-color: #333; /* Device casing background */
     user-select: none; 
 }
 
-/* 📞 PHONE SCREEN SIMULATION */
+/* 📞 PHONE SCREEN SIMULATION (Includes Background Image) */
 #phone-frame {
     width: 380px; 
     height: 700px;
-    background-color: #fff; 
+    
+    /* ADDED: Background Image Setup */
+    /* CRITICAL: Ensure you have a file named 'app_background.jpg' in your repo */
+    background-image: url('app_background.jpg');
+    background-size: cover; /* Fills the whole area */
+    background-position: center; 
+    background-repeat: no-repeat;
+    
     border: 10px solid #111; 
     border-radius: 40px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -29,7 +36,8 @@ body {
 
 /* HEADER AND CHARACTER STYLING */
 header h1 {
-    color: #333;
+    color: #fff; /* Changed color to white for better visibility over background image */
+    text-shadow: 1px 1px 2px #000;
     margin-bottom: 10px;
     font-size: 1.5em;
 }
@@ -37,20 +45,18 @@ header h1 {
 #character-container {
     cursor: pointer; 
     margin-top: 10px;
-    /* Hide overflow to keep the image inside the container during animation */
     overflow: hidden; 
-    height: 300px; /* Give the container height for the floating motion */
+    height: 300px; 
 }
 
-/* NEW: Wrapper for Continuous Floating Motion */
+/* Wrapper for Continuous Floating Motion */
 #character-wrapper {
-    /* Use a simple transition for the continuous JS floating motion */
     transition: transform 0.1s linear; 
 }
 
 #abdu-character {
     display: block;
-    width: 250px; /* Reduced size to fit the mobile frame */
+    width: 250px; 
     height: auto; 
     transition: transform 0.1s ease; 
     border-radius: 5px;
@@ -59,13 +65,13 @@ header h1 {
 /* NEW: CSS Keyframe for the Tap Reaction (Bubble Pulse) */
 @keyframes bubblePulse {
     0% { transform: scale(1); border-radius: 5px; opacity: 1; }
-    30% { transform: scale(1.1) rotate(-2deg); border-radius: 50%; opacity: 0.9; } /* Peak expansion and distortion */
+    30% { transform: scale(1.1) rotate(-2deg); border-radius: 50%; opacity: 0.9; } 
     100% { transform: scale(1); border-radius: 5px; opacity: 1; }
 }
 
 /* Class applied on click/tap */
 #abdu-character.is-pulsing {
-    animation: bubblePulse 0.5s ease-out 1; /* Run once, quickly */
+    animation: bubblePulse 0.5s ease-out 1; 
 }
 
 
