@@ -1,5 +1,5 @@
 const character = document.getElementById('abdu-character');
-const characterWrapper = document.getElementById('character-wrapper'); // New reference for floating
+const characterWrapper = document.getElementById('character-wrapper'); 
 const danceBtn = document.getElementById('dance-btn');
 const dressBtn = document.getElementById('dress-btn');
 const bathBtn = document.getElementById('bath-btn');
@@ -8,7 +8,7 @@ const defaultBtn = document.getElementById('default-btn');
 let currentAnimation = null; // Used for Dance/Image swap loops
 let isAnimatedState = false; // Flag to stop floating when doing a special animation
 
-// --- SPEECH FUNCTION (Unchanged) ---
+// --- SPEECH FUNCTION ---
 function speak(text) {
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -21,21 +21,15 @@ function speak(text) {
 
 // --- CONTINUOUS FLOATING MOTION (The Math/Fluid Effect) ---
 let floatFrame = 0;
-const floatSpeed = 0.05; // Speed of the sine wave motion
-const floatAmplitude = 8; // Max displacement (8px up/down)
+const floatSpeed = 0.05; 
+const floatAmplitude = 8; 
 
 function startFloating() {
-    if (!isAnimatedState) { // Only float when not performing a special action
+    if (!isAnimatedState) { 
         floatFrame += floatSpeed;
-        
-        // Use Math.sin for smooth, wave-like up and down motion
         const floatY = Math.sin(floatFrame) * floatAmplitude;
-        
-        // Apply the mathematical position to the wrapper
         characterWrapper.style.transform = `translateY(${floatY}px)`;
     }
-    
-    // Request the browser to run this function again on the next repaint
     requestAnimationFrame(startFloating);
 }
 
@@ -46,7 +40,6 @@ character.addEventListener('touchstart', handleCharacterInteraction);
 
 function handleCharacterInteraction() {
     
-    // Stop any special animation loops before pulsing
     stopAnimation(); 
     
     // 1. Apply the CSS animation class (triggers the bubblePulse)
@@ -57,14 +50,14 @@ function handleCharacterInteraction() {
     reactionSound.play().catch(error => {});
     speak("Whoa! I feel bubbly!"); 
 
-    // 3. Remove the class after the animation is finished (500ms from CSS)
+    // 3. Remove the class after the animation is finished
     setTimeout(() => {
         character.classList.remove('is-pulsing');
     }, 500); 
 }
 
 
-// --- ANIMATION CONTROLS (Using the simpler image swapping for special states) ---
+// --- ANIMATION CONTROLS (Image swapping for special states) ---
 
 // Helper to stop image swapping animations
 function stopAnimation() {
@@ -92,16 +85,19 @@ function startAction(frames, interval, speechText) {
 
 // Action functions
 function startDance() {
+    // CRITICAL: Ensure these files exist in your repo
     const frames = ['abdu_dance_1.jpg', 'abdu_dance_2.jpg']; 
     startAction(frames, 150, "I'm dancing! Look at my moves!");
 }
 
 function dressUp() {
+    // CRITICAL: Ensure these files exist in your repo
     const frames = ['abdu_hat_1.jpg', 'abdu_hat_2.jpg']; 
     startAction(frames, 300, "I look so stylish in this cap!");
 }
 
 function takeABath() {
+    // CRITICAL: Ensure these files exist in your repo
     const frames = ['abdu_bath_1.jpg', 'abdu_bath_2.jpg']; 
     startAction(frames, 400, "Ah, the water is nice and warm. Don't look!");
 }
@@ -125,6 +121,6 @@ defaultBtn.addEventListener('touchstart', goDefault);
 
 // --- INITIAL START ---
 window.onload = function() {
-    goDefault(); // Set initial state
+    goDefault(); // Set initial image state
     startFloating(); // Begin the continuous floating animation
 };
